@@ -4,3 +4,4 @@
 .prettierrc
 yarn.lock
 .idea/car-rent-app-mp.iml
+.env
