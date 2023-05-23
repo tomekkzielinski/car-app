@@ -6,7 +6,7 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
@@ -15,4 +15,13 @@ model User {
   email    String  @unique
   name     String?
   password String
+  rented   Car[]
+}
+
+model Car {
+  id       String  @id
+  model    String
+  brand    String
+  Renter   User?   @relation(fields: [renterId], references: [id])
+  renterId String?
 }

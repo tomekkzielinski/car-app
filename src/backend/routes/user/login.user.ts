@@ -14,7 +14,11 @@ const SECRET = (process.env.TOKEN_SECRET as string) ?? 'XYZ'
 export default {
     method: 'get',
     path: '/api/login',
-    validators: [body('email').isEmail(), body('password').not().isEmpty()],
+    validators: [
+        // authorize,
+        body('email').isEmail(),
+        body('password').not().isEmpty(),
+    ],
     handler: async (req: Request, res: Response) =>
         handleRequest({
             req,

@@ -11,6 +11,7 @@ export const authorize = (req: Request, res: Response, next: NextFunction) => {
             errors: [ReasonPhrases.UNAUTHORIZED],
         })
     } else {
+        res.locals.auth = { userId: result.content.id }
         next()
     }
 }

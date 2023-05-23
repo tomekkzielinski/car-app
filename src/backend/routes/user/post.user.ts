@@ -6,13 +6,13 @@ import { prisma } from '../../database'
 import { TRoute } from '../types'
 import { handleRequest } from '../../utils/request.utils'
 import { createHash } from '../../utils/hash.utils'
-import { authorize } from '../../utils/middleware.utils'
+
 const SALT = (process.env.PASSWORD_SALT as string) ?? 'XYZ'
 export default {
     method: 'post',
     path: '/api/user',
     validators: [
-        authorize,
+        // authorize,
         body('email').isEmail(),
         body('password').not().isEmpty(),
     ],
@@ -25,13 +25,14 @@ export default {
             execute: async () => {
                 const { email, name, password } = req.body
                 const passwordHash = createHash(password, SALT)
+                const data = {
+                    id: v4(),
+                    name,
+                    email,
+                    password: passwordHash,
+                }
                 return prisma.user.create({
-                    data: {
-                        id: v4(),
-                        name,
-                        email,
-                        password: passwordHash,
-                    },
+                    data: data,
                 })
             },
         }),

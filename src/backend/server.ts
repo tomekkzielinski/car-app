@@ -4,6 +4,7 @@ import cors from 'cors'
 import limit from 'express-rate-limit'
 import { CorsOptions } from 'cors'
 import router from './routes'
+import * as bodyParser from 'body-parser'
 
 export type TServerConfig = {
     port: number
