@@ -12,7 +12,7 @@ const SALT = (process.env.PASSWORD_SALT as string) ?? 'XYZ'
 const SECRET = (process.env.TOKEN_SECRET as string) ?? 'XYZ'
 
 export default {
-    method: 'get',
+    method: 'post',
     path: '/api/login',
     validators: [
         // authorize,

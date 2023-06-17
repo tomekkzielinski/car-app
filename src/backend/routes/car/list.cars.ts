@@ -10,6 +10,8 @@ interface CarDTO {
     brand: string
     model: string
     rented: boolean
+    photo: string
+    description: string
 }
 
 export default {
@@ -31,6 +33,8 @@ export default {
                         id: car.id,
                         brand: car.brand,
                         model: car.model,
+                        photo: car.photo ?? "brak zdjęcia",
+                        description: car.description ?? "brak opisu",
                         rented: false,
                     }
                     return carDTO

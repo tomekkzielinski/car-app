@@ -6,6 +6,8 @@ interface CarItemApi {
     model: string
     id: string
     rented: boolean
+    photo: string
+    description: string
 }
 
 export default function Index() {
@@ -35,7 +37,7 @@ export default function Index() {
             {availableCars.length > 0 && (
                 <div className='container grid grid-cols-3'>
                     {availableCars.map((car) => {
-                        return <CarItem brand={car.brand} model={car.model} rented={car.rented} />
+                        return <CarItem {...car} />
                     })}
                 </div>
             )}
