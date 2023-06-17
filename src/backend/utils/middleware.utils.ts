@@ -7,7 +7,8 @@ export const authorize = (req: Request, res: Response, next: NextFunction) => {
     const parsedToken = token?.replace('Bearer ', '')
     const result = verifyToken(parsedToken ?? '', SECRET)
     if (!token || !result.isValid) {
-        res.send(StatusCodes.UNAUTHORIZED).json({
+        //nie wiem czemu tak, tak mi podpowiedzial czat GPT :)
+       return res.sendStatus(StatusCodes.UNAUTHORIZED).json({
             errors: [ReasonPhrases.UNAUTHORIZED],
         })
     } else {

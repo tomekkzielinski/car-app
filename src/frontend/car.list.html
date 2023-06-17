@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+          .car-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.car-item {
+        border-radius: 50px;
+        margin: 10px;
+        background-color: #D8E5E9;
+        overflow: hidden;
+        
+}
+.car-image {
+        width:100%;
+        height: 70%;
+        object-fit: cover;
+        max-height: 320px;
+}
+.car-name {
+    margin-top: 10px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.car-description {
+    margin-top: 5px;
+    margin-bottom: 0;
+}
+.content p {
+    text-align: center;
+    margin: 10px;
+}
+@media (max-width: 768px) {
+    /* Zasady CSS dla małych ekranów */
+    .card {
+      flex-direction: column;
+      align-items: center;
+    }
+    .card_image {
+      width: 100%;
+    }
+    .card_content {
+      width: 100%;
+    }
+  }
+  @media (max-width: 480px) {
+    /* Zasady CSS dla bardzo małych ekranów */
+    .card_title {
+      font-size: 24px;
+    }
+    .card_description {
+      font-size: 18px;
+      margin-left: 40px;
+    }
+  }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <h1>OFERTA</h1>
+        
+        <div class="car-grid">
+            <div class="car-item">
+                <img src="photos/background.png" alt="bmw yellow" class="car-image">
+                <h3 class="car-name">BMW M4</h3>
+                <p class="car-description">3.0 Twin Power Turbo 431 KM</p>
+                <p class="car-description">3199 PLN / DZIEŃ</p>
+            </div>
+            <div class="car-item">
+                <img src="Obrazki/mercedes.jpg" alt="mercedes cabrio" class="car-image">
+                <h3 class="car-name">MERCEDES AMG</h3>
+                <p class="car-description">5.5 V8 biturbo 585 KM</p>
+                <p class="car-description">2999 PLN / DZIEŃ</p>
+            </div>
+            <div class="car-item">
+                <img src="Obrazki/mustang.jpg" alt="mustang szary" class="car-image">
+                <h3 class="car-name">FORD MUSTANG</h3>
+                <p class="car-description">5.0 V8 GT 450 KM</p>
+                <p class="car-description">2499 PLN / DZIEŃ</p>
+            </div>
+            <div class="car-item">
+                <img src="Obrazki/audi.jpg" alt="audi czarne" class="car-image">
+                <h3 class="car-name">AUDI RS7 SPORTBACK</h3>
+                <p class="car-description">4.0 TFSI V8 560 KM</p>
+                <p class="car-description">5000 PLN / DZIEŃ</p>
+            </div>
+            <div class="car-item">
+                <img src="Obrazki/gt500.jpg" alt="mustang gt" class="car-image">
+                <h3 class="car-name">FORD MUSTANG GT500</h3>
+                <p class="car-description">5.0 V8 750 KM</p>
+                <p class="car-description">3499 PLN / DZIEŃ</p>
+            </div>
+            <div class="car-item">
+                <img src="Obrazki/hellcat.jpg" alt="piekielny kot" class="car-image">
+                <h3 class="car-name">CHALLENGER HELLCAT</h3>
+                <p class="car-description">6.2 SUPERCHARGER 717 KM</p>
+                <p class="car-description">4999 PLN / DZIEŃ</p>
+            </div>
+            <div class="car-item">
+                <img src="Obrazki/lambo.jpg" alt="huragan" class="car-image">
+                <h3 class="car-name">LAMBORGHINI HURACAN</h3>
+                <p class="car-description">5.2 V10 640 KM</p>
+                <p class="car-description">9999 PLN / DZIEŃ</p>
+            </div>
+            <div class="car-item">
+                <img src="Obrazki/NISSAN.jpeg" alt="za szybcy za wsciekli" class="car-image">
+                <h3 class="car-name">NISSAN R34 SKYLINE</h3>
+                <p class="car-description">2.6 TWIN-TURBO 550 KM</p>
+                <p class="car-description">6666 PLN / DZIEŃ</p>
+            </div>
+            <div class="car-item">
+                <img src="Obrazki/FERRARI.jpg" alt="szybki czerwony" class="car-image">
+                <h3 class="car-name">FERRARI TESTAROSSA</h3>
+                <p class="car-description">5.0 F512 TR 390 KM</p>
+                <p class="car-description">8999 PLN / DZIEŃ</p>
+            </div>
+            <!-- Dodaj kolejne 6 samochodów w podobny sposób -->
+        </div>
+    </div>
+</body>
+</html>

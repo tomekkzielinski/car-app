@@ -13,6 +13,9 @@ export const verifyToken = (
     secret: string,
 ): { isValid: boolean; content: jwt.JwtPayload } => {
     const parsedToken = token.replace('Bearer ', '')
+    // console.log('secret', secret);
+    // console.log('parsedToken', parsedToken);
+    // console.log('moja zaszyfrowana wartość' , jwt.sign(parsedToken, secret))
     try {
         return {
             isValid: true,

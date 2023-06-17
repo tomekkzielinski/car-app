@@ -1,0 +1,77 @@
+
+body {
+    background-color: #CCC5B9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Open Sans', sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    background-image: url("photos/background.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    height: 100vh;
+    width: 100%;
+  }
+  
+  
+
+.login-form {
+    background-color: #403D39;
+    color: aliceblue;
+    height: 40%;
+    width: 80%;
+    text-align: center;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 30px;
+    border-radius: 5px;
+    background-color: rgba(204, 197, 185, 0.5);
+
+}
+.form-label {
+    font-weight: bold;
+}
+.form-control {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+
+  }
+  .form-text {
+    color: #777;
+    font-size: 14px;
+  }
+  .btn-primary {
+    background-color: #EB5E28;
+    color: #fff;
+    border: solid 1px black;
+    padding: 15px 60px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 50px;
+    align-items: baseline;
+
+  }
+  .btn-primary:hover {
+    background-color: #ef8354;
+  }
+  .btn-primary-register {
+    background-color: #EB5E28;
+    color: #fff;
+    border: solid 1px black;
+    padding: 15px 60px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 50px;
+  }
+  .button-container {
+    display: flex;
+    justify-content: center; /* Wycentrowanie w poziomie */
+    align-items: center; /* Wycentrowanie w pionie */
+    gap: 10px; /* Dodatkowy odstęp między przyciskami (opcjonalnie) */
+  }
