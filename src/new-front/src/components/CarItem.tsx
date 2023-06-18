@@ -16,11 +16,11 @@ export default function CarItem({
     description,
 }: CarItemProps) {
     return (
-        <div className="card w-96 bg-base-100 shadow-xl">
+        <div className="card w-96 bg-base-100 shadow-xl mt-6">
             <figure>
                 <img
                     src={photo}
-                    alt="Shoes"
+                    alt="photo"
                 />
             </figure>
             <div className="card-body">
