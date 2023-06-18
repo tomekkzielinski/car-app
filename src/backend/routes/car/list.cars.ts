@@ -5,7 +5,7 @@ import { TRoute } from '../types'
 import { handleRequest } from '../../utils/request.utils'
 import { authorize } from '../../utils/middleware.utils'
 
-interface CarDTO {
+export interface CarDTO {
     id: string
     brand: string
     model: string
@@ -33,8 +33,8 @@ export default {
                         id: car.id,
                         brand: car.brand,
                         model: car.model,
-                        photo: car.photo ?? "brak zdjęcia",
-                        description: car.description ?? "brak opisu",
+                        photo: car.photo ?? 'brak zdjęcia',
+                        description: car.description ?? 'brak opisu',
                         rented: false,
                     }
                     return carDTO

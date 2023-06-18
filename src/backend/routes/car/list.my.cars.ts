@@ -5,13 +5,7 @@ import { TRoute } from '../types'
 import { handleRequest } from '../../utils/request.utils'
 import { authorize } from '../../utils/middleware.utils'
 import { UUID } from 'crypto'
-
-interface CarDTO {
-    id: string
-    brand: string
-    model: string
-    rented: boolean
-}
+import { CarDTO } from './list.cars'
 
 export default {
     method: 'get',
@@ -33,6 +27,8 @@ export default {
                         id: car.id,
                         brand: car.brand,
                         model: car.model,
+                        photo: car.photo ?? 'brak zdjęcia',
+                        description: car.description ?? 'brak opisu',
                         rented: car.renterId !== null,
                     }
                     return carDTO
