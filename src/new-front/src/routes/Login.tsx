@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import Alert from '../components/Alert'
-import { redirect, useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 
 const register = async (email: string, password: string): Promise<{
     error: boolean,
@@ -24,7 +24,7 @@ const register = async (email: string, password: string): Promise<{
     if (registerCall.data) {
         return {
             error: false,
-            message: registerCall.data.password
+            message: "Rejestracja przebiegła pomyślnie. Zaloguj się."
         }
     }
 
@@ -55,9 +55,10 @@ const login = async (email: string, password: string): Promise<{
     }).then((resp) => resp.json())
 
     if (registerCall.data) {
+        console.log(registerCall.data.token)
         return {
             error: false,
-            message: registerCall.data.password
+            message: registerCall.data.token
         }
     }
 
@@ -74,16 +75,17 @@ export default function LoginPage() {
     const [password, setPassword] = useState('')
 
     const [error, setError] = useState('')
+    const [success, setSuccess] = useState('')
 
     const handleRegistration = async () => {
         const registration = await register(email, password)
 
         if (registration.error) {
-            setError(registration.message)   
+            setSuccess('')
+            setError(registration.message)
         } else {
-            localStorage.setItem("token", registration.message)
             setError('')
-            navigate("/")
+            setSuccess(registration.message)
         }
     }
 
@@ -136,7 +138,9 @@ export default function LoginPage() {
                     Forget Password?
                 </a>
 
-                {error.length > 0 && <Alert text={error} />}
+                {error.length > 0 && <Alert type="error" text={error} />}
+
+                {success.length > 0 && <Alert type="success" text={success} />}
 
                 <div className="flex gap-2">
                     <button
