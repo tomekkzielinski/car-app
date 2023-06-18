@@ -22,8 +22,8 @@ model Car {
   id       String  @id
   model    String
   brand    String
-  photo    String?
-  description String?
+  photo    String
+  description String
   Renter   User?   @relation(fields: [renterId], references: [id])
   renterId String?
 }

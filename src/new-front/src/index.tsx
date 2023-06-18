@@ -7,6 +7,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Login from './routes/Login'
 import MyCars from './routes/MyCars'
 import Layout from './components/Layout'
+import Addcar from './routes/Addcar'
 
 const router = createBrowserRouter([
     {
@@ -30,6 +31,14 @@ const router = createBrowserRouter([
         element: (
             <Layout>
                 <MyCars />
+            </Layout>
+        ),
+    },
+    {
+        path: '/add-car',
+        element: (
+            <Layout>
+                <Addcar />
             </Layout>
         ),
     },

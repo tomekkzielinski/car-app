@@ -12,11 +12,14 @@ export default function Layout({ children }: { children: JSX.Element }) {
                 <div className="flex-none">
                     <ul className="menu menu-horizontal px-1">
                         <li>
+                        <Link to={`/add-car`}>Dodaj auto jako administrator</Link>
+                        </li>
+                        <li>
                             <Link to={`/`}>Wynajmij auto</Link>
                         </li>
                         <li>
                             <Link to={token ? `/my-cars` : '/login'}>
-                                Moje autoa
+                                Moje wynajęte auta
                             </Link>
                         </li>
                         <li>
