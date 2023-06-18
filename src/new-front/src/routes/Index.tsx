@@ -15,17 +15,21 @@ export default function Index() {
 
     useEffect(() => {
         const fetchData = async () => {
-            const cars: { data: CarItemApi[] } = await fetch(
-                'http://localhost:3000/api/cars/available',
-                {
-                    headers: {
-                        Authorization:
-                            'Bearer eyJhbGciOiJIUzI1NiJ9.WFla.rXQr4IFyUHeqNGPyqUXWzMIYPLcvjREQuXM7g_1ifFU',
+            try {
+                const cars: { data: CarItemApi[] } = await fetch(
+                    'http://localhost:3000/api/cars/available',
+                    {
+                        headers: {
+                            Authorization:
+                                'Bearer eyJhbGciOiJIUzI1NiJ9.WFla.rXQr4IFyUHeqNGPyqUXWzMIYPLcvjREQuXM7g_1ifFU',
+                        },
                     },
-                },
-            ).then((resp) => resp.json())
-
-            setAvailableCars(cars.data)
+                ).then((resp) => resp.json())
+    
+                setAvailableCars(cars.data)
+            } catch (err) {
+                console.log('Nie udało się pobrać danych o samochodach z backendu')
+            }
         }
 
         fetchData()

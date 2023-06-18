@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import Alert from '../components/Alert'
+import { redirect, useNavigate } from "react-router-dom"
 
 const register = async (email: string, password: string): Promise<{
     error: boolean,
@@ -20,9 +21,16 @@ const register = async (email: string, password: string): Promise<{
         body: JSON.stringify({ email: email, password: password }),
     }).then((resp) => resp.json())
 
+    if (registerCall.data) {
+        return {
+            error: false,
+            message: registerCall.data.password
+        }
+    }
+
     return {
-        error: false,
-        message: registerCall.data.password
+        error: true,
+        message: "Nie udało się zarejestrować"
     }
 }
 
@@ -46,13 +54,22 @@ const login = async (email: string, password: string): Promise<{
         body: JSON.stringify({ email: email, password: password }),
     }).then((resp) => resp.json())
 
+    if (registerCall.data) {
+        return {
+            error: false,
+            message: registerCall.data.password
+        }
+    }
+
     return {
-        error: false,
-        message: registerCall.data.password
+        error: true,
+        message: "Nie udało się zalogować"
     }
 }
 
 export default function LoginPage() {
+    const navigate = useNavigate();
+
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
@@ -65,18 +82,20 @@ export default function LoginPage() {
             setError(registration.message)   
         } else {
             localStorage.setItem("token", registration.message)
+            setError('')
+            navigate("/")
         }
     }
 
     const handleLogin = async () => {
-        console.log(1111)
         const logging = await login(email, password)
-        console.log(22222)
 
         if (logging.error) {
-            setError(logging.message)   
+            setError(logging.message)
         } else {
             localStorage.setItem("token", logging.message)
+            setError('')
+            navigate("/")
         }
     }
 
