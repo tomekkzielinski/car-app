@@ -38,6 +38,8 @@ export interface CarItemProps {
   photo: string;
   description: string;
   token: string | null;
+  isAdmin: boolean;
+  reloadCars: () => void
 }
 
 const rentCar = async (carId: string, token: string) => {
@@ -70,7 +72,7 @@ const deleteCar = async (carId: string, token: string) => {
   const rentCarCall = await fetch(`http://localhost:3000/api/car/${carId}`, {
     headers: {
       'Content-Type': 'application/json',
-      Authorization: `Bearer eyJhbGciOiJIUzI1NiJ9.WFla.rXQr4IFyUHeqNGPyqUXWzMIYPLcvjREQuXM7g_1ifFU`,
+      Authorization: `Bearer ${token}`,
     },
     method: 'DELETE',
     body: JSON.stringify({ carId }),
@@ -87,28 +89,28 @@ const CarItem: React.FC<CarItemProps> = ({
   photo,
   description,
   token,
+  isAdmin,
+  reloadCars
 }) => {
-  const [showAlert, setShowAlert] = useState(false);
+
   const navigate = useNavigate();
 
   const handleRentCar = () => {
     rentCar(id, token!);
+    reloadCars()
   };
 
   const handleReturnCar = () => {
     returnCar(id, token!);
+    reloadCars()
   };
 
   const handleDeleteCar = () => {
     deleteCar(id, token!);
-    setShowAlert(true);
+    reloadCars()
   };
 
-  useEffect(() => {
-    if (showAlert) {
-      window.location.reload();
-    }
-  }, [showAlert]);
+
 
   const rentButton = <Button onClick={handleRentCar} text="Wynajmij" />;
   const deleteButton = <Button onClick={handleDeleteCar} text="Usuń auto" />;
@@ -129,9 +131,6 @@ const CarItem: React.FC<CarItemProps> = ({
         </h2>
         <p>{description}</p>
         <div className="card-actions justify-end">{button}</div>
-        {showAlert && (
-          <Alert type="success" text="Auto zostało usunięte z bazy danych. Odswież stronę." />
-        )}
         <button className="card-actions justify-end" onClick={handleDeleteCar}>
           Usuń auto
         </button>
