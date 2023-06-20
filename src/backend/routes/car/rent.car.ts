@@ -26,7 +26,7 @@ export default {
             responseFailStatus:
                 StatusCodes.UNPROCESSABLE_ENTITY | StatusCodes.NOT_FOUND,
             execute: async () => {
-                const { carId } = req.params
+                const { carId } = req.body
                 const userId = res.locals.auth.userId as UUID
                 return await prisma
                     .$transaction(async (tx) => {

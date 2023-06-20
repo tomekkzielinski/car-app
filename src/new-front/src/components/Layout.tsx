@@ -5,7 +5,7 @@ export default function Layout({ children }: { children: JSX.Element }) {
     const navigate = useNavigate()
     const token = localStorage.getItem('token')
     const isAdmin = localStorage.getItem('isAdmin') === 'true'
-    console.log(isAdmin)
+
     const handleLogout = () => {
         localStorage.removeItem('token')
         localStorage.removeItem('isAdmin')

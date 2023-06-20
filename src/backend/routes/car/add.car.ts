@@ -12,7 +12,7 @@ interface CarDTO {
     brand: string
     model: string
     description: string | null
-    photo: string | null 
+    photo: string | null
     rented: boolean
 }
 
@@ -39,10 +39,7 @@ export default {
                         model,
                         brand,
                         photo,
-                        description
-
-                        
-
+                        description,
                     },
                 })
                 const carDTO: CarDTO = {
@@ -51,7 +48,7 @@ export default {
                     model: car.model,
                     photo: car.photo,
                     description: car.description,
-                    rented: false
+                    rented: false,
                 }
                 return carDTO
             },

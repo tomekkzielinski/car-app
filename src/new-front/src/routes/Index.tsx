@@ -9,11 +9,10 @@ export interface CarItemApi {
     photo: string
     description: string
 }
-const fetchCars = async () =>
+const fetchCars = async (token: string) =>
     await fetch('http://localhost:3000/api/cars/available', {
         headers: {
-            Authorization:
-                'Bearer eyJhbGciOiJIUzI1NiJ9.WFla.rXQr4IFyUHeqNGPyqUXWzMIYPLcvjREQuXM7g_1ifFU',
+            Authorization: `Bearer ${token}`,
         },
     }).then((resp) => resp.json())
 
@@ -26,9 +25,11 @@ export default function Index() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const cars: { data: CarItemApi[] } = await fetchCars()
+                if (token) {
+                    const cars: { data: CarItemApi[] } = await fetchCars(token)
 
-                setAvailableCars(cars.data)
+                    setAvailableCars(cars.data)
+                }
             } catch (err) {
                 console.log(
                     'Nie udało się pobrać danych o samochodach z backendu',
@@ -39,9 +40,9 @@ export default function Index() {
         fetchData()
     }, [])
 
-    const reloadCars = async () => {
+    const reloadCars = async (token: string) => {
         try {
-            const cars: { data: CarItemApi[] } = await fetchCars()
+            const cars: { data: CarItemApi[] } = await fetchCars(token)
 
             setAvailableCars(cars.data)
         } catch (err) {
@@ -56,7 +57,7 @@ export default function Index() {
             {availableCars.length > 0 ? (
                 <div className="container grid grid-cols-3">
                     {availableCars.map((car) => {
-                        return <CarItem {...car} token={token} reloadCars={reloadCars} isAdmin={isAdmin}/>
+                        return <CarItem {...car} token={token} reloadCars={(t: string) => reloadCars(t)} isAdmin={isAdmin}/>
                     })}
                 </div>
             ) : (

@@ -26,7 +26,7 @@ export default {
                 StatusCodes.UNPROCESSABLE_ENTITY | StatusCodes.NOT_FOUND,
             messages: { uniqueConstraintFailed: 'Email must be unique.' },
             execute: async () => {
-                const { carId } = req.params
+                const { carId } = req.body
                 return await prisma
                     .$transaction(async (tx) => {
                         let car = await tx.car.findFirst({
