@@ -40,6 +40,7 @@ export default {
                     } as TCustomError
                 return {
                     token: createToken(user, SECRET, '7d'),
+                    isAdmin: user.isAdmin
                 }
             },
         }),

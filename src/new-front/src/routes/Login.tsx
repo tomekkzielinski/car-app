@@ -13,7 +13,7 @@ const register = async (email: string, password: string): Promise<{
             message: 'Złe dane rejestracji'
         }
     }
-    const registerCall = await fetch('http://localhost:3000/api/user', {
+    const odpowiedzZBackendu = await fetch('http://localhost:3000/api/user', {
         headers: {
             'Content-Type': 'application/json',
         },
@@ -21,7 +21,7 @@ const register = async (email: string, password: string): Promise<{
         body: JSON.stringify({ email: email, password: password }),
     }).then((resp) => resp.json())
 
-    if (registerCall.data) {
+    if (odpowiedzZBackendu.data) {
         return {
             error: false,
             message: "Rejestracja przebiegła pomyślnie. Zaloguj się."
@@ -36,7 +36,8 @@ const register = async (email: string, password: string): Promise<{
 
 const login = async (email: string, password: string): Promise<{
     error: boolean,
-    message: string
+    message: string,
+    isAdmin?: boolean
 }> => {
     if (!email || !password) {
         console.log('Złe dane logowania')
@@ -46,7 +47,7 @@ const login = async (email: string, password: string): Promise<{
         }
     }
 
-    const registerCall = await fetch('http://localhost:3000/api/login', {
+    const odpowiedzZBackendu = await fetch('http://localhost:3000/api/login', {
         headers: {
             'Content-Type': 'application/json',
         },
@@ -54,11 +55,12 @@ const login = async (email: string, password: string): Promise<{
         body: JSON.stringify({ email: email, password: password }),
     }).then((resp) => resp.json())
 
-    if (registerCall.data) {
-        console.log(registerCall.data.token)
+    if (odpowiedzZBackendu.data) {
+        console.log(odpowiedzZBackendu.data.token)
         return {
             error: false,
-            message: registerCall.data.token
+            message: odpowiedzZBackendu.data.token,
+            isAdmin: odpowiedzZBackendu.data.isAdmin
         }
     }
 
@@ -96,6 +98,7 @@ export default function LoginPage() {
             setError(logging.message)
         } else {
             localStorage.setItem("token", logging.message)
+            localStorage.setItem("isAdmin", logging.isAdmin ? logging.isAdmin.toString() : 'false')
             setError('')
             navigate("/")
         }

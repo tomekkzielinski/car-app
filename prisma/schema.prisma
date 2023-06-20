@@ -16,6 +16,7 @@ model User {
   name     String?
   password String
   rented   Car[]
+  isAdmin Boolean @default(false)
 }
 
 model Car {
